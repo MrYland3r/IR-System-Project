@@ -3,10 +3,14 @@ import pickle
 import json
 
 def index_review():
-    # Load reviews from file
     with open('reviews.json', 'r') as file:
         reviews = json.load(file)
-    documents = [review['review'] for review in reviews]
+    documents = [review['review'] for review in reviews if 'review' in review]
+
+    # Check if empty
+    if not documents or all(not doc or doc.isspace() for doc in documents):
+        print("No valid documents to index.")
+        return
 
     # Create TF-IDF index
     vectorizer = TfidfVectorizer()
@@ -17,4 +21,4 @@ def index_review():
         pickle.dump(vectorizer, f)
 
 if __name__ == '__main__':
-    index_reviews()
+    index_review()

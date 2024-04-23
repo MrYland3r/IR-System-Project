@@ -3,6 +3,10 @@ from scrapy.crawler import CrawlerProcess
 
 class MovieReviewSpider(scrapy.Spider):
     name = 'movie_reviews'
+    custom_settings = {
+        'USER_AGENT': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
+        'HTTPERROR_ALLOWED_CODES': [308] 
+    }
     start_urls = ['https://www.imdb.com/chart/top']
 
     def parse(self, response):
@@ -24,10 +28,16 @@ class MovieReviewSpider(scrapy.Spider):
 def run_spider():
     """Function to initiate the spider."""
     process = CrawlerProcess(settings={
-        'FEED_FORMAT': 'json',
-        'FEED_URI': 'reviews.json',
-        'LOG_LEVEL': 'INFO'
-    })
+    'FEEDS': {
+        'reviews.json': {
+            'format': 'json',
+            'overwrite': True
+        }
+    },
+    'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+    'LOG_LEVEL': 'INFO'
+})
+
     process.crawl(MovieReviewSpider)
     process.start()
 
