@@ -21,7 +21,7 @@ The system is built through three main parts (and main.py):
 
 ## Architecture
 - **Scrapy Spider**: Responsible for scraping data from IMDb.
-- **Data Storage**: JSON files used for interim data storage.
+- **Data Storage**: JSON files.
 - **Indexing Service**: Python scripts that process data and create a TF-IDF matrix.
 - **Flask API**: Serves the search interface and handles queries.
 
@@ -33,7 +33,7 @@ The system is built through three main parts (and main.py):
 - Run All: `python main.py`
 
 ## Conclusion
-The project sadly does not work in its current state. This originates from the crawler being blocked by imdb, but all files are functional per se.
+The project sadly does not work in its current state. This originates from the crawler requests being blocked by imdb, but all files are functional per se. More changes required.
 
 ## Data Sources
 Movie data is scraped from [IMDb Top Charts](https://www.imdb.com/chart/top). (main source of issues with crawler)
