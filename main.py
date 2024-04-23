@@ -1,7 +1,7 @@
-from crawler.spider import ReviewSpider
-from indexer.index import indexer
-from scrapy.crawler import CrawlerProcess
-from webapp.app import app
+from indexer import index_review
+from crawler import Crawler
+from app import app
+import threading
 
 def run_crawler():
     process = CrawlerProcess()
@@ -17,4 +17,4 @@ def run_indexer():
 if __name__ == '__main__':
     run_crawler()
     run_indexer()
-    app.run()  # Start Flask app
+    app.run()  # Start app
