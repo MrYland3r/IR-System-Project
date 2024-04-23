@@ -38,6 +38,16 @@ The project sadly does not work in its current state. This originates from the c
 ## Data Sources
 Movie data is scraped from [IMDb Top Charts](https://www.imdb.com/chart/top). (main source of issues with crawler)
 
+## Scripts
+```bash
+chmod +x build.sh
+chmod +x run.sh
+```
+To execute:
+```bash
+./build.sh
+./run.sh
+```
 
 ## Source Code
 The source code is organized as follows:
